@@ -2,7 +2,6 @@
 //Prints out all the prime numbers smaller than a specified integer
 
 #include<iostream>
-#include<iomanip>
 
 using namespace std;
 
@@ -12,7 +11,7 @@ int main()
 	cin >> n;
 	int nums[n];
 
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < n; i++
 	{
 		nums[i] = i + 1;
 	}

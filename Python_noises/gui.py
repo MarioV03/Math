@@ -1,5 +1,5 @@
 from tkinter import *
-import Perlin
+from perlin import *
 
 # color formating shit
 def value_color(value):

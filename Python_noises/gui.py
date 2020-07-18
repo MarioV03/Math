@@ -1,5 +1,5 @@
-from tkinter import *
-from perlin import *
+from tkinter import Tk, Canvas, PhotoImage
+import perlin
 
 # color formating shit
 def value_color(value):
@@ -26,14 +26,17 @@ def show(noise):
 
   for x in range(W):
     for y in range(H):
-      value = 2*noise.get_value(x/64, y/64)*255
-      value += noise.get_value(x/16 + 3.567, y/16 + 3.567)*255
-      value = int(value/3)
-      img.put(value_color(value), (x+1, y+1))
+      img.put(value_color(get_noise_value(x/32, y/32)), (x+1, y+1))
 
   window.mainloop()
 
 
-noise = Perlin(int(input("Seed: ")))
+def get_noise_value(x, y):
+  v = noise.get_value(x, y + 0.2*(y%5))
+  v = int(v*0xff)
+  return v
+
+
+noise = perlin.Perlin(int(input("Seed: ")))
 #print(noise.get_value(4.5, 4.5))
 show(noise)

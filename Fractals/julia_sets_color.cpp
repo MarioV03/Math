@@ -1,22 +1,35 @@
 #include <graphics.h>
 #include <complex>
+#include <cmath>
 
 float metallic_ratio(int n)
 {
 	return (n + sqrt(n*n + 4))/2;
 }
 
-bool julia(int x, int y, std::complex<float> c)
+int julia_color(int x, int y, std::complex<float> c)
 {
 	float R = 3;
 	std::complex<float> z = std::complex<float>((x - 320) / 200.0, (y - 240) / 200.0);
-
-	for (int i = 0; i < 300; i++)
+	
+	int color = 0;
+	while (std::abs(z) < R && color < 500)
 	{
 		z = z*z + c;
+		color++;
 	}
+	
 
-	return (z.real() * z.real() + z.imag() * z.imag()) < R*R;
+	if(color > 270) return 0;
+	if(color > 150) return 4;
+	if(color > 80) return 14;
+	if(color > 55) return 3;
+	if(color > 35) return 9;
+	if(color > 15) return 1;
+	return 0;
+	
+	// return (int)(log(700/color)) + 6;
+	
 }
 
 int main()
@@ -29,7 +42,7 @@ int main()
 	
 	for (int x = 0; x < 640; x++)
 		for (int y = 0; y < 480; y++)
-			putpixel(x, y, WHITE * julia(x, y, c));
+			putpixel(x, y, julia_color(x, y, c));
 
 	getch();
 	closegraph();

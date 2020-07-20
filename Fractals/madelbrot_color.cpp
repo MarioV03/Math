@@ -36,8 +36,6 @@ int main()
 	int gd = DETECT, gm;
 
 	initgraph(&gd, &gm, NULL);
-
-	std::complex<float> c = std::complex<float>(-0.8, 0.156);
 	
 	for (int x = 0; x < 640; x++)
 		for (int y = 0; y < 480; y++)

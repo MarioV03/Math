@@ -32,8 +32,7 @@ def show(noise):
 
 
 def get_noise_value(x, y):
-  v = noise.get_value(x, y + 0.2*(y%5))
-  v = int(v*0xff)
+  v = int(noise.get_value(x, y)*0xff)
   return v
 
 

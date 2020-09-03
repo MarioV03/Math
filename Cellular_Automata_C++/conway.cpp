@@ -12,7 +12,7 @@ int current = 0;
 
 using namespace std;
 
-bool grid[2][WIDTH][HEIGHT];
+bool * grid;
 
 void init_grid()
 {
